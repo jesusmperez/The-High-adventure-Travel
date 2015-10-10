@@ -2,9 +2,6 @@
 //We will implement an agency program
 #include<iostream>
 #include<string>
-//Jesus Perez
-//Michael Fletes
-//
 
 using namespace std;
 char menu();
@@ -21,16 +18,15 @@ int main()
 {
     char selection;
     int people, days;
-    int instructor, scuba, lodging, rental;// variables to decide how many people will be doing what
-                                           // depending on what activity they will be doing
+    int instructor, scuba, lodging, rental;
     
-    message();// function that will display a message to the user, (user interface)
-    selection = menu();// checks what the user wants for the packages
+    
+    selection = menu();
     
     switch(selection)
     {
-        case'a':  people = getUserInputP();// gets the number of people
-                  days = getUserInputD();// gets the number of days
+        case'a':  people = getUserInputP();
+                  days = getUserInputD();
                   cout << "please enter how many people would like instuctors for rock climbing" << endl;
                   cin >> instuctor;
                   
