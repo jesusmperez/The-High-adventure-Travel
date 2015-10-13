@@ -2,26 +2,31 @@
 //We will implement an agency program
 #include<iostream>
 #include<string>
+
 //Jesus Perez
 //Michael Fletes
-//
+//Sandra Flores
 
 using namespace std;
+
 char menu();
 int getUserInputP();
 int getUserInputD();
 void message();
 
-double climbing( int people, int days, int instuctor, int rental);
-double scuba( int people, int days, int scuba);
-double skyDiveColorado(int people, int days, int lodging);
-double Barron Cliff(int people, int days, int rental);
+double climbing(int people, int days, int instructees, int rentees);
+double scuba(int people, int diving);
+double skyDive(int people, int days, int lodging, char option);
+double spelunk(int people, int days, int rentees); 
+double getDiscount(double total, int people);
 
 int main()
 {
     char selection;
+    char option;
+    double total;
     int people, days;
-    int instructor, scuba, lodging, rental;// variables to decide how many people will be doing what
+    int instructees, diving, lodging, rentees;// variables to decide how many people will be doing what
                                            // depending on what activity they will be doing
     
     message();// function that will display a message to the user, (user interface)
@@ -32,34 +37,36 @@ int main()
         case'a':  people = getUserInputP();// gets the number of people
                   days = getUserInputD();// gets the number of days
                   cout << "please enter how many people would like instuctors for rock climbing" << endl;
-                  cin >> instuctor;
+                  cin >> instructees;
                   
-                  climbing(people, days, instructor);
+                  cout << climbing(people, days, instructees, rentees)<< " Total package cost"<<endl;
                   break;
                   
         
         case'b':  people = getUserInputP();
                   days = getUserInputD();
                   cout << "please enter how many people would like scuba lessons" << endl;
-                  cin >> scuba;
+                  cin >> diving;
                   
-                 scuba(people, days, scuba);
+                  cout << scuba(people, diving)<< " Will be your total cost for this package" << endl;
                  break;
         
         case'c':  people = getUserInputP();
                   days = getUserInputD();
                   cout << "please enter how many people will want lodging" << endl;
                   cin >> lodging;
-                  
-                  skyDiveColorado(people, days, lodging);
+                  cout << "What lodge do you want?" << endl;
+                  cout <<" Enter  'w' or 'W' for wilderness lodge, else you will be put in the Luxury Inn"<<endl;
+                  cin >> option;
+                  cout << skyDive(people, days, lodging, option)<< " Will be your total cost for this package" << endl;
                   break;
         
         case'd':  people = getUserInputP();
                   days = getUserInputD();
                   cout << "please enter how many people would like to rent equipment" << endl;
-                  cin >> rental;
+                  cin >> rentees;
               
-                  Barron Cliff(people, days, rental);
+                  cout << spelunk(people, days, rentees)<< " Will be your total cost for this package" << endl;
                   break;
         default: cout <<" Sorry did not understand you request" << endl;
                   break;
@@ -72,84 +79,39 @@ int main()
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //***********************************************
+char menu()
+{
+    char userInput;
+    cout <<" What would you like to do? "<< endl;
+    cout <<" Enter 'a' for climbing 'b' for scuba 'c' for skydiving 'd' for spelunk" << endl;
+    cin >> userInput;
+    
+    
+    return userInput;
+}
+int getUserInputP()
+{
+    int people;
+    cout <<" How many people will be attending this trip" << endl;
+    cin >>  people;
+    return people;
+    
+}
+int getUserInputD()
+{
+    int days;
+    cout <<" How many days will you be attending ?" << endl;
+    cin >> days;
+    
+    return days;
+}
+void message()
+{
+    cout <<" Hello and welcome to the agency" << endl;
+    cout <<" happy to see that you want our service" << endl;
+    return;
+}
 double climbing(int people, int days, int instructees, int rentees)
 {
     double total = 0;
@@ -193,7 +155,7 @@ double skyDive(int people, int days, int lodging, char option)
     
     total += (baseCharge * people);
     
-    if(option = 'W')
+    if((option == 'W') || (option =='w'))
     {
         total += (wildLodge * people) * days;
     }
@@ -237,8 +199,3 @@ double getDiscount(double total, int people)
     }
     return result;
 }
-double climbing(int people, int days, int instructees, int rentees);
-double scuba(int people, int diving);
-double skyDive(int people, int days, int lodging, char option);
-double spelunk(int people, int days, int rentees); 
-double getDiscount(double total, int people);
